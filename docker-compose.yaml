@@ -1,0 +1,18 @@
+# docker-compose.yaml
+version: '3'
+
+services:
+  alice:
+    build: '.'
+    ports:
+      - '5002:8000'
+    environment:
+      SERVICE_NAME: alice
+      OTHER_NAME: bob
+  bob:
+    build: '.'
+    ports:
+      - '5001:8000'
+    environment:
+      SERVICE_NAME: bob
+      OTHER_NAME: alice
