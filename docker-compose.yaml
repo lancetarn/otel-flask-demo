@@ -7,12 +7,16 @@ services:
     ports:
       - '5002:8000'
     environment:
-      SERVICE_NAME: alice
-      OTHER_NAME: bob
+      - OTHER_NAME=bob
+      - OTEL_EXPORTER_OTLP_ENDPOINT
+      - OTEL_EXPORTER_OTLP_HEADERS
+      - OTEL_SERVICE_NAME=alice
   bob:
     build: '.'
     ports:
       - '5001:8000'
     environment:
-      SERVICE_NAME: bob
-      OTHER_NAME: alice
+      - OTHER_NAME=alice
+      - OTEL_EXPORTER_OTLP_ENDPOINT
+      - OTEL_EXPORTER_OTLP_HEADERS
+      - OTEL_SERVICE_NAME=bob

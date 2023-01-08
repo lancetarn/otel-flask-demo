@@ -256,3 +256,5 @@ fabric.properties
 .idea
 .terraform.lock.hcl
 .DS_Store
+.env
+.envrc

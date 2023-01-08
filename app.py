@@ -7,7 +7,6 @@ import requests
 
 app = Flask(__name__)
 
-SERVICE_NAME = os.getenv("SERVICE_NAME")
 OTHER_NAME = os.getenv("OTHER_NAME")
 OTHER = f"http://{OTHER_NAME}:8000"
 
@@ -22,6 +21,7 @@ def ping():
         url = f"{OTHER}/pong"
 
     res = requests.get(url)
+    res.raise_for_status()
     return res.text
 
 

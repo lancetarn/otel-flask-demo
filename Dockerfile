@@ -47,4 +47,5 @@ COPY --from=builder-base $PYSETUP_PATH $PYSETUP_PATH
 COPY ./app.py $PYSETUP_PATH
 
 EXPOSE 8000
-CMD ["flask", "run", "--host=0.0.0.0", "--port=8000"]
+# CMD ["flask", "run", "--host=0.0.0.0", "--port=8000"]
+CMD ["opentelemetry-instrument", "--traces_exporter", "console,otlp_proto_grpc", "--metrics_exporter", "otlp_proto_grpc", "flask", "run", "--host=0.0.0.0", "--port=8000"]
