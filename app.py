@@ -14,8 +14,23 @@ OTHER = f"http://{OTHER_NAME}:8000"
 
 @app.route("/")
 def ping():
-    if randint(0, 9) == 5:
-        raise RuntimeError("Whiff!")
     sleep(0.005)
-    res = requests.get(OTHER)
+    url = OTHER
+    if randint(0, 9) == 5:
+        url = f"{url}/whiff"
+    else:
+        url = f"{OTHER}/pong"
+
+    res = requests.get(url)
     return res.text
+
+
+@app.route("/pong")
+def pong():
+    sleep(0.005)
+    return "pong"
+
+
+@app.route("/whiff")
+def whiff():
+    raise RuntimeError("Whiff!")
