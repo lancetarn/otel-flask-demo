@@ -11,6 +11,7 @@ services:
       - OTEL_EXPORTER_OTLP_ENDPOINT
       - OTEL_EXPORTER_OTLP_HEADERS
       - OTEL_SERVICE_NAME=alice
+      - OTEL_PYTHON_DISABLED_INSTRUMENTATIONS=sqlite3
   bob:
     build: '.'
     ports:
@@ -20,3 +21,4 @@ services:
       - OTEL_EXPORTER_OTLP_ENDPOINT
       - OTEL_EXPORTER_OTLP_HEADERS
       - OTEL_SERVICE_NAME=bob
+      - OTEL_PYTHON_DISABLED_INSTRUMENTATIONS=sqlite3
